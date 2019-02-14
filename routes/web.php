@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +11,24 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::group(['middelware' => ['guest']], function(){
+
+    Route::get('/register', [
+        'as' => 'show-register',
+        'uses'=>'RegisterController@create'
+        ]);
+
+Route::post('/register', 'RegisterController@store')->name('register'); 
+
+Route::get('/login','LoginController@create')->name('show-login');
+
+Route::post('/login','LoginController@store')->name('login');
+
+});
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,17 +53,10 @@ Route::resource('posts', 'PostController');
 
 Route::post('posts/{id}/comments','PostController@addComment' )->name('posts.comment');
 
-Route::get('/register', [
-    'as' => 'show-register',
-    'uses'=>'RegisterController@create'
-    ]);
+
 
 // Rout::get('/register', 'RegisterController@create')->name()
 
-Route::post('/register', 'RegisterController@store')->name('register'); 
     
 Route::get('logout','LoginController@logout')->name('logout');
 
-Route::get('/login','LoginController@create')->name('show-login');
-
-Route::post('/login','LoginController@store')->name('login');
