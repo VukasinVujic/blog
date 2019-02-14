@@ -28,7 +28,13 @@ Route::group(['middelware' => ['guest']], function(){
 
 });
 
-
+Route::group(
+    ['middelware' => ['auth'] ],
+    function() {
+        Route::get('/my-posts','UserPostsController@index')
+        ->name('my-posts');
+    }
+);
 
 Route::get('/', function () {
     return view('welcome');
