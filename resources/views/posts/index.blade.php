@@ -33,6 +33,9 @@ all posts
         <p class="blog-post-meta">{{ $post->created_at }} </p>
 
         <p> {{ $post->body }}</p>
+        @if ($post->user)
+        <p>Create by {{ $post->user->name }}</p>
+        @endif
         
 
       </div>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-        'title', 'body'
+        'title', 'body', 'user_id'
     ];
 
 
@@ -20,6 +20,11 @@ class Post extends Model
 
         return slef::where('published' , 0)->get();
 
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function comments(){

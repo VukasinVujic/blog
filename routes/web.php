@@ -20,11 +20,11 @@ Route::group(['middelware' => ['guest']], function(){
         'uses'=>'RegisterController@create'
         ]);
 
-Route::post('/register', 'RegisterController@store')->name('register'); 
+    Route::post('/register', 'RegisterController@store')->name('register'); 
 
-Route::get('/login','LoginController@create')->name('show-login');
+    Route::get('/login','LoginController@create')->name('show-login');
 
-Route::post('/login','LoginController@store')->name('login');
+    Route::post('/login','LoginController@store')->name('login');
 
 });
 
@@ -52,8 +52,6 @@ Route::resource('posts', 'PostController');
 // Route::get('posts/id', 'PostController@show');
 
 Route::post('posts/{id}/comments','PostController@addComment' )->name('posts.comment');
-
-
 
 // Rout::get('/register', 'RegisterController@create')->name()
 

@@ -10,6 +10,13 @@ use App\Http\Requests\CreatCommentRequest;
 
 class PostController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['create', 'store']]);
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +46,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreatCommentRequest $request, $id)
+    public function store(Request $request)
     {
         // requst()->all() izbaciz atribut u ovoj gore funkciji i stavis ovo i u potpunosti isto radi
         // \Log::info(print_r($request_r($request->all(),ture)));
@@ -55,8 +62,14 @@ class PostController extends Controller
                 'body' => 'required'
             ]);
 
-        Post::create($request->all());
-            return redirect(route('posts.index'));
+          $post = Post::create(
+              array_merge(
+                request()->all(),['user_id' => auth()->user()->id]
+              )
+          );
+
+
+            return redirect()->route('posts.index');
     }
 
     /**
