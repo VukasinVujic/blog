@@ -7,7 +7,7 @@ use App\Post;
 use Illuminate\Http\Request;
 use App\Comment;
 use App\Http\Requests\CreatCommentRequest;
-use App\Mail\CommentRecieved;
+use App\Mail\CommentReceived;
 
 class PostController extends Controller
 {
@@ -130,7 +130,7 @@ class PostController extends Controller
         ]);
 
         if($comment->post->user){
-            \Mail::to($comment->post->user)->send(new CommentRecieved(
+            \Mail::to($comment->post->user)->send(new CommentReceived(
                 $comment->post, $comment
             ));
         }

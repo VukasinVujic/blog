@@ -13,14 +13,16 @@
 */
 
 
-Route::group(['middelware' => ['guest']], function(){
+Route::group(['middleware' => ['guest']], function(){
 
     Route::get('/register', [
         'as' => 'show-register',
         'uses'=>'RegisterController@create'
         ]);
 
-    Route::post('/register', 'RegisterController@store')->name('register'); 
+    Route::post('/register', 'RegisterController@store')
+        ->name('register')
+        ->middleware('age');
 
     Route::get('/login','LoginController@create')->name('show-login');
 
@@ -29,12 +31,14 @@ Route::group(['middelware' => ['guest']], function(){
 });
 
 Route::group(
-    ['middelware' => ['auth'] ],
+    ['middleware' => ['auth'] ],
     function() {
         Route::get('/my-posts','UserPostsController@index')
         ->name('my-posts');
     }
 );
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -61,6 +65,5 @@ Route::post('posts/{id}/comments','PostController@addComment' )->name('posts.com
 
 // Rout::get('/register', 'RegisterController@create')->name()
 
-    
 Route::get('logout','LoginController@logout')->name('logout');
 
