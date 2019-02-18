@@ -28,6 +28,8 @@ Route::group(['middleware' => ['guest']], function(){
 
     Route::post('/login','LoginController@store')->name('login');
 
+    Route::get('logout','LoginController@logout')->name('logout');
+
 });
 
 Route::group(
@@ -65,5 +67,5 @@ Route::post('posts/{id}/comments','PostController@addComment' )->name('posts.com
 
 // Rout::get('/register', 'RegisterController@create')->name()
 
-Route::get('logout','LoginController@logout')->name('logout');
+
 

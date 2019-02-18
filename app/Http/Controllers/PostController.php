@@ -134,7 +134,7 @@ class PostController extends Controller
                 $comment->post, $comment
             ));
         }
-            return redirect()->back();
+        return redirect()->back();
 
     }
 }

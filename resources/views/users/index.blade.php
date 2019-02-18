@@ -8,15 +8,7 @@ My posts
 
     @section('content')
 
-{{-- <ul>
-    
-
-    <li> {{ $post->title }}</li>
-
-    @endforeach
- </ul> --}}
-
- <body>
+ 
     <div class="container">
 
 <main role="main" class="container">

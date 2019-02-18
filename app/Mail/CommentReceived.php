@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Post;
 use App\Comment;
 
-class CommentRecieved extends Mailable
+class CommentReceived extends Mailable
 {
     use Queueable, SerializesModels;
 
