@@ -41,6 +41,8 @@ Route::group(
 );
 
 
+Route::delete('/posts/{id}', 'PostController@destroy')
+    ->name('posts-destroy');
 
 Route::get('/', function () {
     return view('welcome');

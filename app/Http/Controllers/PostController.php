@@ -118,7 +118,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect()->back();
     }
 
     public function addComment(CreatCommentRequest $request, $id)
@@ -137,4 +139,6 @@ class PostController extends Controller
         return redirect()->back();
 
     }
+
+    
 }
