@@ -13,7 +13,7 @@ class Post extends Model
 
     protected static function published(){
 
-        return self::where('published', 1)->get();
+        return self::where('published', 1);
     }
 
     protected static function drafts(){

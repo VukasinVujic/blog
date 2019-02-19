@@ -41,6 +41,7 @@ all posts
       </div>
 @endforeach
      
+      {{ $posts->links() }}
     </div>
 
   </div>
