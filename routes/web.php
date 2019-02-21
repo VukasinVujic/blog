@@ -69,5 +69,8 @@ Route::post('posts/{id}/comments','PostController@addComment' )->name('posts.com
 
 // Rout::get('/register', 'RegisterController@create')->name()
 
+Route::get('posts/tags/{tag}', 'TagsController@index');
+
+Route::get('/users/{id}', 'UsersController@show');
 
 

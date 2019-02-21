@@ -47,8 +47,8 @@ all posts
 
       </div>
 @endforeach
-     
-      {{ $posts->links() }}
+     {{-- ovo dole je paginacija --}}
+      {{-- {{ $posts->links() }}   --}}
     </div>
 
   </div>
