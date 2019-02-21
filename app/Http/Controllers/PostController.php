@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Comment;
 use App\Http\Requests\CreatCommentRequest;
 use App\Mail\CommentReceived;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -38,7 +39,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $tags = Tag::all();
+
+        return view('posts.create',compact('tags'));
     }
 
     /**
@@ -60,7 +63,8 @@ class PostController extends Controller
 
             $request->validate([
                 'title' => 'required|min:5',
-                'body' => 'required'
+                'body' => 'required',
+                'tags'=>'required|array'
             ]);
 
           $post = Post::create(
@@ -69,7 +73,7 @@ class PostController extends Controller
               )
           );
 
-
+          $post->tags()->attach(request('tags'));
 
             return redirect()->route('posts.index');
     }
